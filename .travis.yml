@@ -14,3 +14,8 @@ after_success:
   - docker build -t nnethercott/multi-nginx ./nginx 
   - docker build -t nnethercott/multi-server ./server 
   - docker build -t nnethercott/multi-worker ./worker 
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push nnethercott/multi-client
+  - docker push nnethercott/multi-nginx 
+  - docker push nnethercott/multi-server 
+  - docker push nnethercott/multi-worker
